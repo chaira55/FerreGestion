@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class PagoImpl {
+import ferregestion.model.DAO.IPagoDAO;
+
+public class PagoImpl implements IPagoDAO {
 }

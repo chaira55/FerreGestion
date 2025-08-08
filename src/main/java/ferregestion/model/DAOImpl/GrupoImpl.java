@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class GrupoImpl {
+import ferregestion.model.DAO.IGrupoDAO;
+
+public class GrupoImpl implements IGrupoDAO {
 }

@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class DetalleVentaImpl {
+import ferregestion.model.DAO.IDetalleVentaDAO;
+
+public class DetalleVentaImpl implements IDetalleVentaDAO {
 }

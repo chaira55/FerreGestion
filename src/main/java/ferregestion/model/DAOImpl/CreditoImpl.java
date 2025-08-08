@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class CreditoImpl {
+import ferregestion.model.DAO.ICreditoDAO;
+
+public class CreditoImpl implements ICreditoDAO {
 }

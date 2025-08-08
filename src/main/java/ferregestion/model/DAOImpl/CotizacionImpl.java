@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class CotizacionImpl {
+import ferregestion.model.DAO.ICotizacionDAO;
+
+public class CotizacionImpl implements ICotizacionDAO {
 }

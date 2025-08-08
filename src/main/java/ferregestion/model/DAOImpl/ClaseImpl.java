@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class ClaseImpl {
+import ferregestion.model.DAO.IClaseDAO;
+
+public class ClaseImpl implements IClaseDAO {
 }

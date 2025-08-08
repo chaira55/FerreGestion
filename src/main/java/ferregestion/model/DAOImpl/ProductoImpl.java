@@ -1,4 +1,6 @@
 package ferregestion.model.DAOImpl;
 
-public class ProductoImpl {
+import ferregestion.model.DAO.IProductoDAO;
+
+public class ProductoImpl implements IProductoDAO {
 }
