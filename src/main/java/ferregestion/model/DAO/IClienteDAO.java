@@ -9,6 +9,5 @@ public interface IClienteDAO {
     boolean agregarCliente(Cliente cliente);
     boolean modificarCliente(Cliente cliente);
     boolean eliminarCliente(Cliente cliente);
-    Cliente consultarPorCedula(int cedula);
     Cliente consultarPorNombre(String nombre);
 }
