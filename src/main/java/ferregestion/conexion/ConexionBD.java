@@ -16,9 +16,7 @@ public class ConexionBD {
         try {
             //conexion a la bd
             conexion = DriverManager.getConnection(url, user, password);
-            System.out.println("Conectado a: " + conexion.getMetaData().getURL());
-            System.out.println("Usuario: " + conexion.getMetaData().getUserName());
-            //System.out.println("Conexión exitosa a la base de datos.");
+            System.out.println("Conexión exitosa a la base de datos.");
         } catch (SQLException e) {
             System.out.println("Error al conectar: " + e.getMessage());
         }

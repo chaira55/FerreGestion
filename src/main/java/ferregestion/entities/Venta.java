@@ -36,6 +36,54 @@ public class Venta {
         this.tipo_pago = tipo_pago;
     }
 
+    public int getId_venta() {
+        return id_venta;
+    }
+
+    public void setId_venta(int id_venta) {
+        this.id_venta = id_venta;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public int getId_cotizacion() {
+        return id_cotizacion;
+    }
+
+    public void setId_cotizacion(int id_cotizacion) {
+        this.id_cotizacion = id_cotizacion;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTipo_pago() {
+        return tipo_pago;
+    }
+
+    public void setTipo_pago(double tipo_pago) {
+        this.tipo_pago = tipo_pago;
+    }
+
     @Override
     public String toString() {
         return "Venta{" +

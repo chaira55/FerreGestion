@@ -8,6 +8,7 @@ public class Producto {
     private int id_producto;
     private String descripcion;
     private String codigo_clase;
+    private String codigo_grupo;
     private double iva;
     private double precio_compra;
     private double precio_venta;
@@ -18,22 +19,24 @@ public class Producto {
     }
 
     //constructor para el registro
-    public Producto(String codigo_clase, int stock, double precio_venta, double precio_compra, double iva, String descripcion) {
-        this.codigo_clase = codigo_clase;
-        this.stock = stock;
-        this.precio_venta = precio_venta;
-        this.precio_compra = precio_compra;
-        this.iva = iva;
+    public Producto(String descripcion, String codigo_clase, String codigo_grupo, double iva, double precio_compra, double precio_venta, int stock) {
         this.descripcion = descripcion;
+        this.codigo_clase = codigo_clase;
+        this.codigo_grupo = codigo_grupo;
+        this.iva = iva;
+        this.precio_compra = precio_compra;
+        this.precio_venta = precio_venta;
+        this.stock = stock;
     }
 
     //constructo para la lectura de la base de datos
-    public Producto(int id_producto, String descripcion, String codigo_clase, double precio_compra, double iva, double precio_venta, int stock) {
+    public Producto(int id_producto, String descripcion, String codigo_clase, String codigo_grupo, double iva, double precio_compra, double precio_venta, int stock) {
         this.id_producto = id_producto;
         this.descripcion = descripcion;
         this.codigo_clase = codigo_clase;
-        this.precio_compra = precio_compra;
+        this.codigo_grupo = codigo_grupo;
         this.iva = iva;
+        this.precio_compra = precio_compra;
         this.precio_venta = precio_venta;
         this.stock = stock;
     }
@@ -56,6 +59,14 @@ public class Producto {
 
     public String getCodigo_clase() {
         return codigo_clase;
+    }
+
+    public String getCodigo_grupo() {
+        return codigo_grupo;
+    }
+
+    public void setCodigo_grupo(String codigo_grupo) {
+        this.codigo_grupo = codigo_grupo;
     }
 
     public void setCodigo_clase(String codigo_clase) {
@@ -100,6 +111,7 @@ public class Producto {
                 "id_producto=" + id_producto +
                 ", descripcion='" + descripcion + '\'' +
                 ", codigo_clase='" + codigo_clase + '\'' +
+                ", codigo_grupo='" + codigo_grupo + '\'' +
                 ", iva=" + iva +
                 ", precio_compra=" + precio_compra +
                 ", precio_venta=" + precio_venta +
@@ -111,11 +123,11 @@ public class Producto {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return id_producto == producto.id_producto && Double.compare(iva, producto.iva) == 0 && Double.compare(precio_compra, producto.precio_compra) == 0 && Double.compare(precio_venta, producto.precio_venta) == 0 && stock == producto.stock && Objects.equals(descripcion, producto.descripcion) && Objects.equals(codigo_clase, producto.codigo_clase);
+        return id_producto == producto.id_producto && Double.compare(iva, producto.iva) == 0 && Double.compare(precio_compra, producto.precio_compra) == 0 && Double.compare(precio_venta, producto.precio_venta) == 0 && stock == producto.stock && Objects.equals(descripcion, producto.descripcion) && Objects.equals(codigo_clase, producto.codigo_clase) && Objects.equals(codigo_grupo, producto.codigo_grupo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_producto, descripcion, codigo_clase, iva, precio_compra, precio_venta, stock);
+        return Objects.hash(id_producto, descripcion, codigo_clase, codigo_grupo, iva, precio_compra, precio_venta, stock);
     }
 }
