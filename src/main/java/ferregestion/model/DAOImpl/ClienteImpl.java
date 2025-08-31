@@ -2,7 +2,7 @@ package ferregestion.model.DAOImpl;
 
 import ferregestion.model.DAO.IClienteDAO;
 import ferregestion.entities.Cliente;
-import ferregestion.conexion.ConexionBD; // Clase que manejará la conexión
+import ferregestion.conexion.ConexionBD;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
