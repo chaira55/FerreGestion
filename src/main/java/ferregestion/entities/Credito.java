@@ -8,30 +8,30 @@ public class Credito {
     private int id_credito;
     private int id_venta;
     private int cedula;
+    private String nombre;
     private double monto_total;
     private double saldo_pendiente;
-    private boolean imprimir_estado;
 
     //constructor vacio
     public Credito(){
     }
 
     // constructor para el registro
-    public Credito(int id_venta, int cedula, double monto_total, double saldo_pendiente, boolean imprimir_estado) {
+    public Credito(int id_venta, int cedula, String nombre, double monto_total, double saldo_pendiente) {
         this.id_venta = id_venta;
         this.cedula = cedula;
+        this.nombre = nombre;
         this.monto_total = monto_total;
         this.saldo_pendiente = saldo_pendiente;
-        this.imprimir_estado = imprimir_estado;
     }
 
     //constructor para la lectura de la base de datos
-    public Credito(int id_credito, double monto_total, int id_venta, int cedula, boolean imprimir_estado, double saldo_pendiente) {
+    public Credito(int id_credito, int id_venta, int cedula, String nombre, double monto_total, double saldo_pendiente) {
         this.id_credito = id_credito;
-        this.monto_total = monto_total;
         this.id_venta = id_venta;
         this.cedula = cedula;
-        this.imprimir_estado = imprimir_estado;
+        this.nombre = nombre;
+        this.monto_total = monto_total;
         this.saldo_pendiente = saldo_pendiente;
     }
 
@@ -59,6 +59,14 @@ public class Credito {
         this.cedula = cedula;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public double getMonto_total() {
         return monto_total;
     }
@@ -75,14 +83,6 @@ public class Credito {
         this.saldo_pendiente = saldo_pendiente;
     }
 
-    public boolean isImprimir_estado() {
-        return imprimir_estado;
-    }
-
-    public void setImprimir_estado(boolean imprimir_estado) {
-        this.imprimir_estado = imprimir_estado;
-    }
-
 
     @Override
     public String toString() {
@@ -90,9 +90,9 @@ public class Credito {
                 "id_credito=" + id_credito +
                 ", id_venta=" + id_venta +
                 ", cedula=" + cedula +
+                ", nombre='" + nombre + '\'' +
                 ", monto_total=" + monto_total +
                 ", saldo_pendiente=" + saldo_pendiente +
-                ", imprimir_estado=" + imprimir_estado +
                 '}';
     }
 
@@ -100,11 +100,11 @@ public class Credito {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Credito credito = (Credito) o;
-        return id_credito == credito.id_credito && id_venta == credito.id_venta && cedula == credito.cedula && Double.compare(monto_total, credito.monto_total) == 0 && Double.compare(saldo_pendiente, credito.saldo_pendiente) == 0 && imprimir_estado == credito.imprimir_estado;
+        return id_credito == credito.id_credito && id_venta == credito.id_venta && cedula == credito.cedula && Double.compare(monto_total, credito.monto_total) == 0 && Double.compare(saldo_pendiente, credito.saldo_pendiente) == 0 && Objects.equals(nombre, credito.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_credito, id_venta, cedula, monto_total, saldo_pendiente, imprimir_estado);
+        return Objects.hash(id_credito, id_venta, cedula, nombre, monto_total, saldo_pendiente);
     }
 }
