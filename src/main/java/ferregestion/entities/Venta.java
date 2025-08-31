@@ -8,31 +8,34 @@ public class Venta {
     //atrubutos
     private int id_venta;
     private int cedula;
+    private String nombre;
     private int id_cotizacion;
     private LocalDate fecha;
     private double total;
-    private double tipo_pago;
+    private String tipo_pago; //contado-credito
 
     //cosntructor vacio
-    public Venta(){
+    public Venta() {
     }
 
     //constructor para el registro
-    public Venta(int cedula, double total, LocalDate fecha, int id_cotizacion, double tipo_pago) {
+    public Venta(int cedula, String nombre, int id_cotizacion, LocalDate fecha, double total, String tipo_pago) {
         this.cedula = cedula;
-        this.total = total;
-        this.fecha = fecha;
+        this.nombre = nombre;
         this.id_cotizacion = id_cotizacion;
+        this.fecha = fecha;
+        this.total = total;
         this.tipo_pago = tipo_pago;
     }
 
     //cosntructor para la lectura en la base de datos
-    public Venta(int id_venta, int cedula, int id_cotizacion, double total, LocalDate fecha, double tipo_pago) {
+    public Venta(int id_venta, int cedula, String nombre, int id_cotizacion, LocalDate fecha, double total, String tipo_pago) {
         this.id_venta = id_venta;
         this.cedula = cedula;
+        this.nombre = nombre;
         this.id_cotizacion = id_cotizacion;
-        this.total = total;
         this.fecha = fecha;
+        this.total = total;
         this.tipo_pago = tipo_pago;
     }
 
@@ -60,6 +63,14 @@ public class Venta {
         this.id_cotizacion = id_cotizacion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -76,11 +87,11 @@ public class Venta {
         this.total = total;
     }
 
-    public double getTipo_pago() {
+    public String getTipo_pago() {
         return tipo_pago;
     }
 
-    public void setTipo_pago(double tipo_pago) {
+    public void setTipo_pago(String tipo_pago) {
         this.tipo_pago = tipo_pago;
     }
 
@@ -89,10 +100,11 @@ public class Venta {
         return "Venta{" +
                 "id_venta=" + id_venta +
                 ", cedula=" + cedula +
+                ", nombre='" + nombre + '\'' +
                 ", id_cotizacion=" + id_cotizacion +
                 ", fecha=" + fecha +
                 ", total=" + total +
-                ", tipo_pago=" + tipo_pago +
+                ", tipo_pago='" + tipo_pago + '\'' +
                 '}';
     }
 
@@ -100,11 +112,11 @@ public class Venta {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Venta venta = (Venta) o;
-        return id_venta == venta.id_venta && cedula == venta.cedula && id_cotizacion == venta.id_cotizacion && Double.compare(total, venta.total) == 0 && Double.compare(tipo_pago, venta.tipo_pago) == 0 && Objects.equals(fecha, venta.fecha);
+        return id_venta == venta.id_venta && cedula == venta.cedula && id_cotizacion == venta.id_cotizacion && Double.compare(total, venta.total) == 0 && Objects.equals(nombre, venta.nombre) && Objects.equals(fecha, venta.fecha) && Objects.equals(tipo_pago, venta.tipo_pago);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_venta, cedula, id_cotizacion, fecha, total, tipo_pago);
+        return Objects.hash(id_venta, cedula, nombre, id_cotizacion, fecha, total, tipo_pago);
     }
 }

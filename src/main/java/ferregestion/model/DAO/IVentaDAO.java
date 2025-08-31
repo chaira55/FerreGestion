@@ -9,4 +9,5 @@ public interface IVentaDAO {
     List<Venta> consultarPorFecha(Venta venta);
     boolean eliminarVenta(Venta venta);
     boolean agregarVenta(Venta venta);
+    boolean modificarVenta(Venta venta);
 }
