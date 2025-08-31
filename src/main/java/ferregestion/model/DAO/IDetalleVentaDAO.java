@@ -9,5 +9,4 @@ public interface IDetalleVentaDAO {
     boolean modificarDetalleVenta(DetalleVenta detalle);
     boolean eliminarDetalleVenta(DetalleVenta detalle);
     boolean agregarDetalleVenta(DetalleVenta detalle);
-    DetalleVenta consultarPorCliente(DetalleVenta detalle);
 }
