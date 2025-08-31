@@ -8,24 +8,27 @@ public class Cotizacion {
     //atributos
     private int id_cotizacion;
     private int cedula;
+    private String nombre;
     private LocalDate fecha;
     private double total;
 
     //constructor vacio
-    public Cotizacion(){
+    public Cotizacion() {
     }
 
     //constructor para el registro
-    public Cotizacion(int cedula, LocalDate fecha, double total) {
+    public Cotizacion(int cedula, String nombre, LocalDate fecha, double total) {
         this.cedula = cedula;
+        this.nombre = nombre;
         this.fecha = fecha;
         this.total = total;
     }
 
     //constructor para la lectura de la base de datos
-    public Cotizacion(int id_cotizacion, int cedula, LocalDate fecha, double total) {
+    public Cotizacion(int id_cotizacion, int cedula, String nombre, LocalDate fecha, double total) {
         this.id_cotizacion = id_cotizacion;
         this.cedula = cedula;
+        this.nombre = nombre;
         this.fecha = fecha;
         this.total = total;
     }
@@ -38,20 +41,28 @@ public class Cotizacion {
         this.id_cotizacion = id_cotizacion;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-
     public int getCedula() {
         return cedula;
     }
 
     public void setCedula(int cedula) {
         this.cedula = cedula;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public double getTotal() {
@@ -67,6 +78,7 @@ public class Cotizacion {
         return "Cotizacion{" +
                 "id_cotizacion=" + id_cotizacion +
                 ", cedula=" + cedula +
+                ", nombre='" + nombre + '\'' +
                 ", fecha=" + fecha +
                 ", total=" + total +
                 '}';
@@ -76,11 +88,11 @@ public class Cotizacion {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Cotizacion that = (Cotizacion) o;
-        return id_cotizacion == that.id_cotizacion && cedula == that.cedula && Double.compare(total, that.total) == 0 && Objects.equals(fecha, that.fecha);
+        return id_cotizacion == that.id_cotizacion && cedula == that.cedula && Double.compare(total, that.total) == 0 && Objects.equals(nombre, that.nombre) && Objects.equals(fecha, that.fecha);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_cotizacion, cedula, fecha, total);
+        return Objects.hash(id_cotizacion, cedula, nombre, fecha, total);
     }
 }

@@ -9,9 +9,12 @@ public class PruebaClase {
 
         // Agregar
         dao.agregarClase(new Clase("C001", "Construcción"));
+        dao.agregarClase(new Clase("C002", "Pintura"));
+        dao.agregarClase(new Clase("C003", "Electricidad"));
+        dao.agregarClase(new Clase("C004", "Fontanería"));
 
         // Consultar todas
-        System.out.println(dao.consultarClases());
+        //System.out.println(dao.consultarClases());
 /*
         // Consultar por nombre
         System.out.println(dao.consultarPorNombre(new Clase(null, "Construcción")));

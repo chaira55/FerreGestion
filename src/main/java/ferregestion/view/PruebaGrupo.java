@@ -8,7 +8,11 @@ public class PruebaGrupo {
         GrupoImpl dao = new GrupoImpl();
 
         // Agregar
-        dao.agregarGrupo(new Grupo("G001", "Herramientas", 19.0));
+        dao.agregarGrupo(new Grupo("G001", "Herramientas", 19.0));       // Clase C001
+        dao.agregarGrupo(new Grupo("G002", "Materiales", 5.0));         // Clase C001
+        dao.agregarGrupo(new Grupo("G003", "Brochas y Rodillos", 19.0));// Clase C002
+        dao.agregarGrupo(new Grupo("G004", "Cables y Accesorios", 19.0));// Clase C003
+        dao.agregarGrupo(new Grupo("G005", "Tubos y Conexiones", 19.0));// Clase C004
 /*
         // Consultar
         System.out.println(dao.consultarGrupos());
