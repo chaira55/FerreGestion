@@ -18,7 +18,8 @@ public class DetalleCotizacion {
     }
 
     //constructor para su registro
-    public DetalleCotizacion(int id_producto, String descripcion_producto, int cantidad, double precio_unitario, double subtotal_produto, int id_cotizacion) {
+    public DetalleCotizacion(int id_cotizacion, int id_producto, String descripcion_producto, int cantidad, double precio_unitario, double subtotal_produto) {
+        this.id_cotizacion = id_cotizacion;
         this.id_producto = id_producto;
         this.descripcion_producto = descripcion_producto;
         this.cantidad = cantidad;
@@ -36,6 +37,62 @@ public class DetalleCotizacion {
         this.descripcion_producto = descripcion_producto;
         this.cantidad = cantidad;
         this.precio_unitario = precio_unitario;
+        this.subtotal_produto = subtotal_produto;
+    }
+
+    public int getId_detalle_cotizacion() {
+        return id_detalle_cotizacion;
+    }
+
+    public void setId_detalle_cotizacion(int id_detalle_cotizacion) {
+        this.id_detalle_cotizacion = id_detalle_cotizacion;
+    }
+
+    public int getId_cotizacion() {
+        return id_cotizacion;
+    }
+
+    public void setId_cotizacion(int id_cotizacion) {
+        this.id_cotizacion = id_cotizacion;
+    }
+
+    public String getDescripcion_producto() {
+        return descripcion_producto;
+    }
+
+    public void setDescripcion_producto(String descripcion_producto) {
+        this.descripcion_producto = descripcion_producto;
+    }
+
+    public int getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
+    }
+
+    public double getPrecio_unitario() {
+        return precio_unitario;
+    }
+
+    public void setPrecio_unitario(double precio_unitario) {
+        this.precio_unitario = precio_unitario;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double getSubtotal_produto() {
+        return subtotal_produto;
+    }
+
+    public void setSubtotal_produto(double subtotal_produto) {
         this.subtotal_produto = subtotal_produto;
     }
 
