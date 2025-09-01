@@ -14,8 +14,8 @@ public class PruebaClase {
         dao.agregarClase(new Clase("C004", "Fontanería"));
 
         // Consultar todas
-        //System.out.println(dao.consultarClases());
-/*
+        System.out.println(dao.consultarClases());
+
         // Consultar por nombre
         System.out.println(dao.consultarPorNombre(new Clase(null, "Construcción")));
 
@@ -24,5 +24,5 @@ public class PruebaClase {
 
         // Eliminar
         dao.eliminarClase(new Clase("C001", null));
- */   }
+    }
 }
