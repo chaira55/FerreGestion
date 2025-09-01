@@ -8,60 +8,36 @@ public class PruebaCliente {
     public static void main(String[] args) {
         ClienteImpl dao = new ClienteImpl();
 
-        // ===================== 1️⃣ Agregar cliente =====================
+        //agregar cliente
         Cliente nuevoCliente = new Cliente(123456789, "Juan Pérez", "3001234567", "Calle 123", "sharik@gmail.com");
-        if (dao.agregarCliente(nuevoCliente)) {
-            System.out.println("Cliente agregado correctamente");
-        } else {
-            System.out.println("No se pudo agregar el cliente");
-        }
+        dao.agregarCliente(nuevoCliente);
 
-        // ===================== 2️⃣ Consultar todos =====================
+        //consultar clientes
         List<Cliente> lista = dao.consultarClientes();
         System.out.println("\nLista de clientes:");
         for (Cliente c : lista) {
             System.out.println(c);
         }
 
-        // ===================== 3️⃣ Buscar cliente por cédula =====================
-        Cliente clienteBusqueda = new Cliente();
-        clienteBusqueda.setCedula(123456789);
-        if (dao.buscarClientePorCedula(clienteBusqueda)) {
-            System.out.println("\nCliente encontrado: " + clienteBusqueda);
-        } else {
-            System.out.println("\nCliente no encontrado");
-        }
+        //buscar cliente por cédula
+        Cliente clienteCedula = new Cliente();
+        clienteCedula.setCedula(123456789);
+        Cliente encontradoPorCedula = dao.consultarPorNombre(clienteCedula);
+        System.out.println(encontradoPorCedula);
 
-        // ===================== 4️⃣ Modificar cliente =====================
+        //modificar cliente
         Cliente clienteModificado = new Cliente(123456789, "Juan Pérez", "3119876543", "Carrera 45", "sharik@gmail.com");
-        if (dao.modificarCliente(clienteModificado)) {
-            System.out.println("Cliente modificado correctamente");
-        } else {
-            System.out.println("No se pudo modificar el cliente");
-        }
+        dao.modificarCliente(clienteModificado);
 
-        // ===================== 5️⃣ Consultar por nombre =====================
-        Cliente encontradoPorNombre = dao.consultarPorNombre("Juan Pérez");
-        if (encontradoPorNombre != null) {
-            System.out.println("\nCliente encontrado por nombre: " + encontradoPorNombre);
-        } else {
-            System.out.println("\nCliente no encontrado por nombre");
-        }
+        //consultar por nombre
+        Cliente clienteBusqueda = new Cliente();
+        clienteBusqueda.setNombre("Juan Peréz");
+        Cliente encontradoPorNombre = dao.consultarPorNombre(clienteBusqueda);
+        System.out.println(encontradoPorNombre);
 
-        // ===================== 6️⃣ Eliminar cliente =====================
+        //eliminar cliente
         Cliente clienteEliminar = new Cliente();
         clienteEliminar.setCedula(123456789);
-        if (dao.eliminarCliente(clienteEliminar)) {
-            System.out.println("Cliente eliminado correctamente");
-        } else {
-            System.out.println("No se pudo eliminar el cliente");
-        }
-
-        // ===================== 7️⃣ Ver lista final =====================
-        List<Cliente> listaFinal = dao.consultarClientes();
-        System.out.println("\n📋 Lista final de clientes:");
-        for (Cliente c : listaFinal) {
-            System.out.println(c);
-        }
+        dao.eliminarCliente(clienteEliminar);
     }
 }

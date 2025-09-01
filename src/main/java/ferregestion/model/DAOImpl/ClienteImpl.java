@@ -11,120 +11,178 @@ public class ClienteImpl implements IClienteDAO {
 
     @Override
     public List<Cliente> consultarClientes() {
-        List<Cliente> lista = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection con = ConexionBD.getConexionBD();
         String sql = "SELECT * FROM cliente";
 
-        try (Connection conn = ConexionBD.getConexionBD();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
+        try{
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                Cliente cliente = new Cliente(
-                        rs.getInt("cedula"),
-                        rs.getString("nombre"),
-                        rs.getString("celular"),
-                        rs.getString("direccion"),
-                        rs.getString("correo")
-                        );
-                lista.add(cliente);
+                Cliente cliente = new Cliente();
+                cliente.setCedula(rs.getInt("cedula"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setCelular(rs.getString("celular"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setCorreo(rs.getString("correo"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+                System.out.println("Error al listar clientes: " + e.getMessage());
         }
-        return lista;
-    }
+
+        finally {
+                try{
+                    con.close();
+                }catch (Exception e){
+                    System.out.println("Error al cerrar conexion: " + e.getMessage());
+                }
+            }
+            return clientes;
+        }
 
     @Override
-    public boolean buscarClientePorCedula(Cliente cliente) {
+    public Cliente buscarClientePorCedula(Cliente cliente) {
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection con = ConexionBD.getConexionBD();
         String sql = "SELECT * FROM cliente WHERE cedula = ?";
-        try (Connection conn = ConexionBD.getConexionBD();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, cliente.getCedula());
-            try (ResultSet rs = pstmt.executeQuery()) {
-                return rs.next();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getCedula());
+            rs = ps.executeQuery();
+            if (rs.next()){
+                cliente.setCedula(rs.getInt("cedula"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setCelular(rs.getString("celular"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setCorreo(rs.getString("correo"));
+                return cliente;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println("Error al listar clientes por nombre: " + e.getMessage());
         }
-        return false;
+
+        finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean agregarCliente(Cliente cliente) {
+        PreparedStatement ps;
+        Connection con = ConexionBD.getConexionBD();
         String sql = "INSERT INTO cliente (cedula, nombre, celular, direccion, correo) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = ConexionBD.getConexionBD();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getCedula());
+            ps.setString(2, cliente.getNombre());
+            ps.setString(3, cliente.getCelular());
+            ps.setString(4, cliente.getDireccion());
+            ps.setString(5, cliente.getCorreo());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e){
+            System.out.println("Error al agregar cliente: " + e.getMessage());
+        }
 
-            pstmt.setInt(1, cliente.getCedula());
-            pstmt.setString(2, cliente.getNombre());
-            pstmt.setString(3, cliente.getCelular());
-            pstmt.setString(4, cliente.getDireccion());
-            pstmt.setString(5, cliente.getCorreo());
-            return pstmt.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        finally {
+            try {
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
         }
         return false;
     }
 
     @Override
     public boolean modificarCliente(Cliente cliente) {
+        PreparedStatement ps;
+        Connection con = ConexionBD.getConexionBD();
         String sql = "UPDATE cliente SET cedula=?, nombre=?, celular=?, direccion=?, correo=? WHERE cedula=?";
-        try (Connection conn = ConexionBD.getConexionBD();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getCedula());
+            ps.setString(2, cliente.getNombre());
+            ps.setString(3, cliente.getCelular());
+            ps.setString(4, cliente.getDireccion());
+            ps.setString(5, cliente.getCorreo());
+            ps.setInt(6, cliente.getCedula());
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            System.out.println("Error al modificar cliente: " + e.getMessage());
+        }
 
-            pstmt.setInt(1, cliente.getCedula());
-            pstmt.setString(2, cliente.getNombre());
-            pstmt.setString(3, cliente.getCelular());
-            pstmt.setString(4, cliente.getDireccion());
-            pstmt.setString(5, cliente.getCorreo());
-            pstmt.setInt(6, cliente.getCedula()); // ← Este faltaba
-
-            return pstmt.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        finally {
+            try {
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
         }
         return false;
     }
 
     @Override
     public boolean eliminarCliente(Cliente cliente) {
+        PreparedStatement ps;
+        Connection con = ConexionBD.getConexionBD();
         String sql = "DELETE FROM cliente WHERE cedula=?";
-        try (Connection conn = ConexionBD.getConexionBD();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cliente.getCedula());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e){
+            System.out.println("Error al eliminar cliente: " + e.getMessage());
+        }
 
-            pstmt.setInt(1, cliente.getCedula());
-            return pstmt.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        finally {
+            try {
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
         }
         return false;
     }
 
     @Override
-    public Cliente consultarPorNombre(String nombre) {
+    public Cliente consultarPorNombre(Cliente cliente) {
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection con = ConexionBD.getConexionBD();
         String sql = "SELECT * FROM cliente WHERE nombre=?";
-        try (Connection conn = ConexionBD.getConexionBD();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, nombre);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return new Cliente(
-                            rs.getInt("cedula"),
-                            rs.getString("nombre"),
-                            rs.getString("celular"),
-                            rs.getString("direccion"),
-                            rs.getString("correo")
-                    );
-                }
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cliente.getNombre());
+            rs = ps.executeQuery();
+            if (rs.next()){
+                cliente.setCedula(rs.getInt("cedula"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setCelular(rs.getString("celular"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setCorreo(rs.getString("correo"));
+                return cliente;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println("Error al listar clientes por nombre: " + e.getMessage());
+        }
+
+        finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
         }
         return null;
     }

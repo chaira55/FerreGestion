@@ -69,7 +69,7 @@ public class ClaseImpl implements IClaseDAO {
         PreparedStatement ps;
         ResultSet rs;
         Connection con = ConexionBD.getConexionBD();
-        String sql = "SELECT codigo_clase, nombre FROM clase WHERE nombre = ?";
+        String sql = "SELECT * FROM clase WHERE nombre = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, clase.getCodigo_clase());
