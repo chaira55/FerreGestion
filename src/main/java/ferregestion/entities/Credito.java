@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Credito {
 
-    //atrubutos
+    //atributos
     private int id_credito;
     private int id_venta;
     private int cedula;
@@ -35,6 +35,7 @@ public class Credito {
         this.saldo_pendiente = saldo_pendiente;
     }
 
+    //metodos getters and setters
     public int getId_credito() {
         return id_credito;
     }
@@ -83,7 +84,7 @@ public class Credito {
         this.saldo_pendiente = saldo_pendiente;
     }
 
-
+    //metodo toString
     @Override
     public String toString() {
         return "Credito{" +
@@ -96,6 +97,7 @@ public class Credito {
                 '}';
     }
 
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

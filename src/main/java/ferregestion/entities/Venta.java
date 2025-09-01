@@ -39,6 +39,7 @@ public class Venta {
         this.tipo_pago = tipo_pago;
     }
 
+    //getters and setter
     public int getId_venta() {
         return id_venta;
     }
@@ -95,6 +96,7 @@ public class Venta {
         this.tipo_pago = tipo_pago;
     }
 
+    //metodo toString
     @Override
     public String toString() {
         return "Venta{" +
@@ -108,6 +110,7 @@ public class Venta {
                 '}';
     }
 
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

@@ -13,12 +13,12 @@ public class Clase {
     }
 
     //constructor para la lectura
-
     public Clase(String codigo_clase, String nombre) {
         this.codigo_clase = codigo_clase;
         this.nombre = nombre;
     }
 
+    //getters and setters
     public String getCodigo_clase() {
         return codigo_clase;
     }
@@ -35,6 +35,7 @@ public class Clase {
         this.nombre = nombre;
     }
 
+    //metodo toString
     @Override
     public String toString() {
         return "Clase{" +
@@ -43,6 +44,7 @@ public class Clase {
                 '}';
     }
 
+    //metodo equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

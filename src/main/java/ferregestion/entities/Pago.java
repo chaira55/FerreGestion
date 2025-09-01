@@ -26,7 +26,7 @@ public class Pago {
         this.monto = monto;
     }
 
-    //constructor para la lectura
+    //constructor para la lectura en la base de datos
     public Pago(int id_pago, int id_credito, int cedula, String nombre, LocalDate fecha_pago, double monto) {
         this.id_pago = id_pago;
         this.id_credito = id_credito;
@@ -36,6 +36,7 @@ public class Pago {
         this.monto = monto;
     }
 
+    //getters and setters
     public int getId_pago() {
         return id_pago;
     }
@@ -84,6 +85,7 @@ public class Pago {
         this.monto = monto;
     }
 
+    //metodo toString
     @Override
     public String toString() {
         return "Pago{" +
@@ -96,6 +98,7 @@ public class Pago {
                 '}';
     }
 
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

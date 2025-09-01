@@ -18,7 +18,6 @@ public class DetalleVenta {
     }
 
     //constructor para el registro
-
     public DetalleVenta(int id_venta, int id_producto, String descripcion_producto, int cantidad, double precio_unitario, double subtotal) {
         this.id_venta = id_venta;
         this.id_producto = id_producto;
@@ -29,7 +28,6 @@ public class DetalleVenta {
     }
 
     //constructor para la lectura de la base de datos
-
     public DetalleVenta(int id_detalle_venta, int id_venta, int id_producto, String descripcion_producto, double subtotal, int cantidad, double precio_unitario) {
         this.id_detalle_venta = id_detalle_venta;
         this.id_venta = id_venta;
@@ -40,19 +38,7 @@ public class DetalleVenta {
         this.precio_unitario = precio_unitario;
     }
 
-    @Override
-    public String toString() {
-        return "DetalleVenta{" +
-                "id_detalle_venta=" + id_detalle_venta +
-                ", id_enta=" + id_venta +
-                ", id_producto=" + id_producto +
-                ", descripcion_producto='" + descripcion_producto + '\'' +
-                ", cantidad=" + cantidad +
-                ", precio_unitario=" + precio_unitario +
-                ", subtotal=" + subtotal +
-                '}';
-    }
-
+    //getters and setters
     public int getId_detalle_venta() {
         return id_detalle_venta;
     }
@@ -109,6 +95,21 @@ public class DetalleVenta {
         this.subtotal = subtotal;
     }
 
+    //metodo toString
+    @Override
+    public String toString() {
+        return "DetalleVenta{" +
+                "id_detalle_venta=" + id_detalle_venta +
+                ", id_enta=" + id_venta +
+                ", id_producto=" + id_producto +
+                ", descripcion_producto='" + descripcion_producto + '\'' +
+                ", cantidad=" + cantidad +
+                ", precio_unitario=" + precio_unitario +
+                ", subtotal=" + subtotal +
+                '}';
+    }
+
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

@@ -25,11 +25,9 @@ public class DetalleCotizacion {
         this.cantidad = cantidad;
         this.precio_unitario = precio_unitario;
         this.subtotal_produto = subtotal_produto;
-        this.id_cotizacion = id_cotizacion;
     }
 
     //constructor para la lectura de la base de datos
-
     public DetalleCotizacion(int id_detalle_cotizacion, int id_cotizacion, int id_producto, String descripcion_producto, int cantidad, double precio_unitario, double subtotal_produto) {
         this.id_detalle_cotizacion = id_detalle_cotizacion;
         this.id_cotizacion = id_cotizacion;
@@ -40,6 +38,7 @@ public class DetalleCotizacion {
         this.subtotal_produto = subtotal_produto;
     }
 
+    //getters and setters
     public int getId_detalle_cotizacion() {
         return id_detalle_cotizacion;
     }
@@ -96,6 +95,7 @@ public class DetalleCotizacion {
         this.subtotal_produto = subtotal_produto;
     }
 
+    //metodo toString
     @Override
     public String toString() {
         return "DetalleCotizacion{" +
@@ -109,6 +109,7 @@ public class DetalleCotizacion {
                 '}';
     }
 
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

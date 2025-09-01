@@ -3,6 +3,7 @@ package ferregestion.entities;
 import java.util.Objects;
 
 public class Grupo {
+
     //atributos
     private String codigo_grupo;
     private String nombre;
@@ -12,7 +13,7 @@ public class Grupo {
     public Grupo(){
     }
 
-    //constructor de ingresar datos y de lectura
+    //constructor de registro y de lectura para la base de datos
     public Grupo(String codigo_grupo, String nombre, double iva) {
         this.codigo_grupo = codigo_grupo;
         this.nombre = nombre;
@@ -53,7 +54,6 @@ public class Grupo {
                 ", iva=" + iva +
                 '}';
     }
-
 
     //metodos equals and hashCode
     @Override

@@ -3,15 +3,19 @@ package ferregestion.entities;
 import java.util.Objects;
 
 public class Cliente {
+
+    //atributos
     private int cedula;
     private String nombre;
     private String celular;
     private String direccion;
     private String correo;
 
+    //constructor vacios
     public Cliente(){
     }
 
+    //constructor para el registro y la lectura en la base de datos
     public Cliente(int cedula, String nombre, String celular, String direccion, String correo) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -20,6 +24,7 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    //getters and setters
     public int getCedula() {
         return cedula;
     }
@@ -60,6 +65,8 @@ public class Cliente {
         this.correo = correo;
     }
 
+
+    //metodo toString
     @Override
     public String toString() {
         return "Cliente{" +
@@ -71,6 +78,8 @@ public class Cliente {
                 '}';
     }
 
+
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

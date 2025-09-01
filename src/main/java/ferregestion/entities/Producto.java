@@ -41,6 +41,7 @@ public class Producto {
         this.stock = stock;
     }
 
+    //getters and setters
     public int getId_producto() {
         return id_producto;
     }
@@ -105,6 +106,7 @@ public class Producto {
         this.stock = stock;
     }
 
+    //metodo toString
     @Override
     public String toString() {
         return "Producto{" +
@@ -119,6 +121,7 @@ public class Producto {
                 '}';
     }
 
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

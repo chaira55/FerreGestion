@@ -33,6 +33,7 @@ public class Cotizacion {
         this.total = total;
     }
 
+    //getters and setters
     public int getId_cotizacion() {
         return id_cotizacion;
     }
@@ -73,6 +74,8 @@ public class Cotizacion {
         this.total = total;
     }
 
+
+    //metodo toString
     @Override
     public String toString() {
         return "Cotizacion{" +
@@ -84,6 +87,7 @@ public class Cotizacion {
                 '}';
     }
 
+    //metodos equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
